@@ -1,5 +1,5 @@
 {% set name = "djangorestframework-queryfields" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/djangorestframework-queryfields-{{ version }}.tar.gz
-  sha256: 6c1d61404e1308158b2a360f0913aed5b5a60f66ee3239345b12f5e1f1458947
+  sha256: 512516947e2d0f7b132469bc3b96b702653ed032e450d90b6efc0dc7fe031ef7
 
 build:
   number: 0
@@ -18,9 +18,10 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python >=3.6
   run:
-    - python
+    - python >=3.6
+    - django
 
 test:
   imports:
