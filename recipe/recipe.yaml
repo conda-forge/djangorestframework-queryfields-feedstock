@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: djangorestframework-queryfields
+  version: "1.1.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/djangorestframework-queryfields-${{ version }}.tar.gz
+  sha256: 512516947e2d0f7b132469bc3b96b702653ed032e450d90b6efc0dc7fe031ef7
+
+build:
+  number: 3
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - django
+
+tests:
+  - python:
+      imports:
+        - drf_queryfields
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: Allows clients to control which fields will be sent in the API response
+  description: |
+    Allows clients to control which fields will be sent in the API
+    response
+  homepage: https://github.com/wimglenn/djangorestframework-queryfields
+  repository: https://github.com/wimglenn/djangorestframework-queryfields
+  documentation: http://djangorestframework-queryfields.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
